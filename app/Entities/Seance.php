@@ -20,6 +20,19 @@ class Seance
         'Autre',
     ];
 
+    /** Liste des équipements proposés dans les formulaires (menu déroulant). */
+    public const EQUIPEMENTS = [
+        'Tapis de course',
+        'Vélo elliptique',
+        'Rameur',
+        'Haltères',
+        'Banc de musculation',
+        'Kettlebell',
+        'Barre de traction',
+        'Tapis de yoga',
+        'Corde à sauter',
+    ];
+
     private ?int $idSeance;
     private string $dateSeance;       // Y-m-d
     private string $typeActivite;

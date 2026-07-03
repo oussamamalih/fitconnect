@@ -87,7 +87,7 @@ body {
 }
 
 .topbar__logo {
-  width: 140px;
+  width: 140px; /* Adjust as needed */
   height: 60px;
   object-fit: contain;
   display: block;

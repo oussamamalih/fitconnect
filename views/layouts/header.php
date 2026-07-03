@@ -11,7 +11,7 @@ $currentPage = $_GET['page'] ?? 'dashboard';
 </head>
 <body>
     <header class="topbar">
-        <div class="topbar__brand">
+      <div class="topbar__brand">
     <img src="assets/images/gymlogo.png" alt="FitConnect Logo" class="topbar__logo">
 </div>
         <nav class="topbar__nav">

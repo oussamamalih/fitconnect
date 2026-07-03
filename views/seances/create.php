@@ -63,8 +63,15 @@
             </div>
             <div class="form-group">
                 <label for="equipement_utilise">Équipement utilisé (optionnel)</label>
-                <input type="text" id="equipement_utilise" name="equipement_utilise"
-                       value="<?= htmlspecialchars($_POST['equipement_utilise'] ?? '') ?>">
+                <select id="equipement_utilise" name="equipement_utilise">
+                    <option value="">-- Aucun --</option>
+                    <?php foreach (Seance::EQUIPEMENTS as $equipement): ?>
+                        <option value="<?= htmlspecialchars($equipement) ?>"
+                            <?= (isset($_POST['equipement_utilise']) && $_POST['equipement_utilise'] === $equipement) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($equipement) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
         </div>
 
