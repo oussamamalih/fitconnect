@@ -75,6 +75,20 @@ class AbonnementController
     }
 
     /**
+     * Supprime définitivement un abonnement.
+     */
+    public function supprimer(int $id): void
+    {
+        try {
+            $this->abonnementService->supprimerAbonnement($id);
+            header('Location: index.php?page=abonnements&supprime=1');
+        } catch (InvalidArgumentException $e) {
+            header('Location: index.php?page=abonnements&error=' . urlencode($e->getMessage()));
+        }
+        exit;
+    }
+
+    /**
      * Affiche l'historique des abonnements d'un adhérent donné
      */
     public function historique(int $idAdherent): void

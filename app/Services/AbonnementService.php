@@ -96,6 +96,25 @@ class AbonnementService
     }
 
     /**
+     * Supprime définitivement un abonnement de la base de données.
+     * Contrairement à resilierAbonnement (qui ne fait que changer le statut),
+     * ceci retire complètement l'enregistrement — utile notamment pour
+     * pouvoir ensuite supprimer un adhérent qui n'a plus besoin de conserver
+     * l'historique de cet abonnement.
+     *
+     * @throws InvalidArgumentException si l'abonnement n'existe pas
+     */
+    public function supprimerAbonnement(int $idAbonnement): bool
+    {
+        $abonnement = $this->abonnementRepository->findById($idAbonnement);
+        if ($abonnement === null) {
+            throw new InvalidArgumentException("Abonnement introuvable.");
+        }
+
+        return $this->abonnementRepository->delete($idAbonnement);
+    }
+
+    /**
      * Vérifie et met à jour automatiquement le statut d'un abonnement
      * si sa date de fin est dépassée (Actif -> Expire).
      * Peut être appelée avant tout enregistrement de séance ou affichage.

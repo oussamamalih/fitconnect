@@ -6,6 +6,20 @@
  */
 class Seance
 {
+    /** Liste des types d'activité proposés dans les formulaires (menu déroulant). */
+    public const TYPES_ACTIVITE = [
+        'Musculation',
+        'Cardio',
+        'Cross-training',
+        'Yoga',
+        'Natation',
+        'Boxe',
+        'Zumba',
+        'Stretching',
+        'Spinning',
+        'Autre',
+    ];
+
     private ?int $idSeance;
     private string $dateSeance;       // Y-m-d
     private string $typeActivite;

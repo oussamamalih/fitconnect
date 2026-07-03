@@ -12,9 +12,8 @@ $currentPage = $_GET['page'] ?? 'dashboard';
 <body>
     <header class="topbar">
         <div class="topbar__brand">
-            <span class="topbar__logo">🏋️</span>
-            <span class="topbar__title">FitConnect</span>
-        </div>
+    <img src="assets/images/gymlogo.png" alt="FitConnect Logo" class="topbar__logo">
+</div>
         <nav class="topbar__nav">
             <a href="index.php?page=dashboard" class="<?= $currentPage === 'dashboard' ? 'active' : '' ?>">Dashboard</a>
             <a href="index.php?page=adherents" class="<?= $currentPage === 'adherents' ? 'active' : '' ?>">Adhérents</a>

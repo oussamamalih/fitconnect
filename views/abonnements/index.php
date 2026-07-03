@@ -32,6 +32,10 @@ function badgeClassForStatut(string $statut): string
     <div class="alert alert--success">Abonnement résilié avec succès.</div>
 <?php endif; ?>
 
+<?php if (isset($_GET['supprime'])): ?>
+    <div class="alert alert--success">Abonnement supprimé avec succès.</div>
+<?php endif; ?>
+
 <?php if (isset($_GET['error'])): ?>
     <div class="alert alert--error"><?= htmlspecialchars($_GET['error']) ?></div>
 <?php endif; ?>
@@ -66,6 +70,9 @@ function badgeClassForStatut(string $statut): string
                                    class="btn btn--danger btn--sm"
                                    onclick="return confirm('Résilier cet abonnement ?');">Résilier</a>
                             <?php endif; ?>
+                            <a href="index.php?page=abonnements&action=supprimer&id=<?= $ab['id_abonnement'] ?>"
+                               class="btn btn--danger btn--sm"
+                               onclick="return confirm('Supprimer définitivement cet abonnement ? Cette action est irréversible.');">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

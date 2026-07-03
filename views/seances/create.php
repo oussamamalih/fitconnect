@@ -46,9 +46,15 @@
             </div>
             <div class="form-group">
                 <label for="type_activite">Type d'activité</label>
-                <input type="text" id="type_activite" name="type_activite" required
-                       placeholder="Ex: Musculation, Cardio, Yoga..."
-                       value="<?= htmlspecialchars($_POST['type_activite'] ?? '') ?>">
+                <select id="type_activite" name="type_activite" required>
+                    <option value="">-- Choisir un type --</option>
+                    <?php foreach (Seance::TYPES_ACTIVITE as $type): ?>
+                        <option value="<?= htmlspecialchars($type) ?>"
+                            <?= (isset($_POST['type_activite']) && $_POST['type_activite'] === $type) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($type) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="duree">Durée (minutes)</label>

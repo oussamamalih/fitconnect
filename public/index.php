@@ -71,6 +71,7 @@ switch ($page) {
         match ($action) {
             'create'     => $abonnementController->create(),
             'resilier'   => $abonnementController->resilier($id ?? 0),
+            'supprimer'  => $abonnementController->supprimer($id ?? 0),
             'historique' => $abonnementController->historique((int) ($_GET['id_adherent'] ?? 0)),
             default      => $abonnementController->index(),
         };
