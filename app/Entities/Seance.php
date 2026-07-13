@@ -95,41 +95,9 @@ class Seance
         return $this->idSalle;
     }
 
-    // --- Setters ---
-    public function setIdSeance(?int $idSeance): void
-    {
-        $this->idSeance = $idSeance;
-    }
-
-    public function setDateSeance(string $dateSeance): void
-    {
-        $this->dateSeance = $dateSeance;
-    }
-
-    public function setTypeActivite(string $typeActivite): void
-    {
-        $this->typeActivite = $typeActivite;
-    }
-
-    public function setDuree(int $duree): void
-    {
-        $this->duree = $duree;
-    }
-
-    public function setEquipementUtilise(?string $equipementUtilise): void
-    {
-        $this->equipementUtilise = $equipementUtilise;
-    }
-
-    public function setIdAdherent(int $idAdherent): void
-    {
-        $this->idAdherent = $idAdherent;
-    }
-
-    public function setIdSalle(int $idSalle): void
-    {
-        $this->idSalle = $idSalle;
-    }
+    // Pas de setters : une séance créée ne peut plus être modifiée dans
+    // l'application (seulement affichée ou supprimée), donc pas besoin
+    // de méthodes pour changer ses valeurs après coup.
 
     /**
      * Construit un objet Seance à partir d'une ligne de résultat PDO

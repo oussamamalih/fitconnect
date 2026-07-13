@@ -23,7 +23,13 @@ class AbonnementRepository
         $stmt = $this->pdo->query("SELECT * FROM abonnement ORDER BY date_debut DESC");
         $rows = $stmt->fetchAll();
 
-        return array_map(fn($row) => Abonnement::fromArray($row), $rows);
+        // On transforme chaque ligne de la BDD en objet Abonnement
+        $abonnements = [];
+        foreach ($rows as $row) {
+            $abonnements[] = Abonnement::fromArray($row);
+        }
+
+        return $abonnements;
     }
 
     /**
@@ -75,7 +81,12 @@ class AbonnementRepository
         $stmt->execute(['id' => $idAdherent]);
         $rows = $stmt->fetchAll();
 
-        return array_map(fn($row) => Abonnement::fromArray($row), $rows);
+        $abonnements = [];
+        foreach ($rows as $row) {
+            $abonnements[] = Abonnement::fromArray($row);
+        }
+
+        return $abonnements;
     }
 
     public function create(Abonnement $abonnement): int

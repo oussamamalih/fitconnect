@@ -38,15 +38,17 @@ class DashboardController
         $totalSalles    = count($this->salleRepository->findAll());
         $totalSeances   = $this->seanceRepository->countAll();
 
-        $abonnements = $this->abonnementRepository->findAll();
-        $totalActifs = count(array_filter(
-            $abonnements,
-            fn($ab) => $ab->getStatut() === Abonnement::STATUT_ACTIF
-        ));
-        $totalExpires = count(array_filter(
-            $abonnements,
-            fn($ab) => $ab->getStatut() === Abonnement::STATUT_EXPIRE
-        ));
+        // On compte les abonnements actifs et expirés en parcourant la liste
+        $abonnements  = $this->abonnementRepository->findAll();
+        $totalActifs  = 0;
+        $totalExpires = 0;
+        foreach ($abonnements as $abonnement) {
+            if ($abonnement->getStatut() === Abonnement::STATUT_ACTIF) {
+                $totalActifs++;
+            } elseif ($abonnement->getStatut() === Abonnement::STATUT_EXPIRE) {
+                $totalExpires++;
+            }
+        }
 
         $repartitionParSalle = $this->seanceRepository->countBySalle();
 

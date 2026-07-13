@@ -73,41 +73,10 @@ class Adherent
         return $this->prenom . ' ' . $this->nom;
     }
 
-    // --- Setters ---
-    public function setIdAdherent(?int $idAdherent): void
-    {
-        $this->idAdherent = $idAdherent;
-    }
-
-    public function setNom(string $nom): void
-    {
-        $this->nom = $nom;
-    }
-
-    public function setPrenom(string $prenom): void
-    {
-        $this->prenom = $prenom;
-    }
-
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
-    }
-
-    public function setTelephone(?string $telephone): void
-    {
-        $this->telephone = $telephone;
-    }
-
-    public function setDateInscription(string $dateInscription): void
-    {
-        $this->dateInscription = $dateInscription;
-    }
-
-    public function setIdSalle(int $idSalle): void
-    {
-        $this->idSalle = $idSalle;
-    }
+    // Note : pas de setters ici. Pour modifier un adhérent, on recrée
+    // simplement un nouvel objet Adherent avec le constructeur (voir
+    // AdherentService::updateAdherent) - plus simple à suivre qu'une
+    // série de setters.
 
     /**
      * Construit un objet Adherent à partir d'une ligne de résultat PDO

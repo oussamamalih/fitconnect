@@ -82,35 +82,12 @@ class Abonnement
             && $aujourdhui <= $this->dateFin;
     }
 
-    // --- Setters ---
-    public function setIdAbonnement(?int $idAbonnement): void
-    {
-        $this->idAbonnement = $idAbonnement;
-    }
-
-    public function setTypeAbonnement(string $typeAbonnement): void
-    {
-        $this->typeAbonnement = $typeAbonnement;
-    }
-
-    public function setDateDebut(string $dateDebut): void
-    {
-        $this->dateDebut = $dateDebut;
-    }
-
-    public function setDateFin(string $dateFin): void
-    {
-        $this->dateFin = $dateFin;
-    }
-
+    // --- Setter ---
+    // On garde seulement setStatut() car c'est le seul setter utilisé dans le projet
+    // (dans AbonnementService, pour passer un abonnement de Actif à Expire).
     public function setStatut(string $statut): void
     {
         $this->statut = $statut;
-    }
-
-    public function setIdAdherent(int $idAdherent): void
-    {
-        $this->idAdherent = $idAdherent;
     }
 
     /**

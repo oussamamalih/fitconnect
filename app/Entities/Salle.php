@@ -44,26 +44,8 @@ class Salle
         return $this->adresse;
     }
 
-    // --- Setters ---
-    public function setIdSalle(?int $idSalle): void
-    {
-        $this->idSalle = $idSalle;
-    }
-
-    public function setNomSalle(string $nomSalle): void
-    {
-        $this->nomSalle = $nomSalle;
-    }
-
-    public function setVille(string $ville): void
-    {
-        $this->ville = $ville;
-    }
-
-    public function setAdresse(string $adresse): void
-    {
-        $this->adresse = $adresse;
-    }
+    // Pas de setters : une Salle n'est jamais modifiée dans l'application,
+    // seulement lue (findAll) pour remplir les listes déroulantes des formulaires.
 
     /**
      * Construit un objet Salle à partir d'une ligne de résultat PDO (tableau associatif)

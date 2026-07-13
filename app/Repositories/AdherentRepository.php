@@ -25,7 +25,13 @@ class AdherentRepository
         $stmt = $this->pdo->query("SELECT * FROM adherent ORDER BY nom ASC, prenom ASC");
         $rows = $stmt->fetchAll();
 
-        return array_map(fn($row) => Adherent::fromArray($row), $rows);
+        // On transforme chaque ligne de la BDD en objet Adherent
+        $adherents = [];
+        foreach ($rows as $row) {
+            $adherents[] = Adherent::fromArray($row);
+        }
+
+        return $adherents;
     }
 
     /**

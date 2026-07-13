@@ -59,30 +59,54 @@ $id     = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
 switch ($page) {
     case 'adherents':
-        match ($action) {
-            'create' => $adherentController->create(),
-            'edit'   => $adherentController->edit($id ?? 0),
-            'delete' => $adherentController->delete($id ?? 0),
-            default  => $adherentController->index(),
-        };
+        switch ($action) {
+            case 'create':
+                $adherentController->create();
+                break;
+            case 'edit':
+                $adherentController->edit($id ?? 0);
+                break;
+            case 'delete':
+                $adherentController->delete($id ?? 0);
+                break;
+            default:
+                $adherentController->index();
+                break;
+        }
         break;
 
     case 'abonnements':
-        match ($action) {
-            'create'     => $abonnementController->create(),
-            'resilier'   => $abonnementController->resilier($id ?? 0),
-            'supprimer'  => $abonnementController->supprimer($id ?? 0),
-            'historique' => $abonnementController->historique((int) ($_GET['id_adherent'] ?? 0)),
-            default      => $abonnementController->index(),
-        };
+        switch ($action) {
+            case 'create':
+                $abonnementController->create();
+                break;
+            case 'resilier':
+                $abonnementController->resilier($id ?? 0);
+                break;
+            case 'supprimer':
+                $abonnementController->supprimer($id ?? 0);
+                break;
+            case 'historique':
+                $abonnementController->historique((int) ($_GET['id_adherent'] ?? 0));
+                break;
+            default:
+                $abonnementController->index();
+                break;
+        }
         break;
 
     case 'seances':
-        match ($action) {
-            'create' => $seanceController->create(),
-            'delete' => $seanceController->delete($id ?? 0),
-            default  => $seanceController->index(),
-        };
+        switch ($action) {
+            case 'create':
+                $seanceController->create();
+                break;
+            case 'delete':
+                $seanceController->delete($id ?? 0);
+                break;
+            default:
+                $seanceController->index();
+                break;
+        }
         break;
 
     case 'dashboard':

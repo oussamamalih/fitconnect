@@ -24,7 +24,13 @@ class SalleRepository
         $stmt = $this->pdo->query("SELECT * FROM salle ORDER BY nom_salle ASC");
         $rows = $stmt->fetchAll();
 
-        return array_map(fn($row) => Salle::fromArray($row), $rows);
+        // On transforme chaque ligne de la BDD en objet Salle
+        $salles = [];
+        foreach ($rows as $row) {
+            $salles[] = Salle::fromArray($row);
+        }
+
+        return $salles;
     }
 
     public function findById(int $id): ?Salle

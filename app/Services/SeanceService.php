@@ -36,16 +36,6 @@ class SeanceService
         return $this->seanceRepository->findById($id);
     }
 
-    public function getSeancesByAdherent(int $idAdherent): array
-    {
-        return $this->seanceRepository->findByAdherent($idAdherent);
-    }
-
-    public function getSeancesBySalle(int $idSalle): array
-    {
-        return $this->seanceRepository->findBySalle($idSalle);
-    }
-
     /**
      * Enregistre une nouvelle séance, après vérification de la règle de gestion :
      * l'abonnement de l'adhérent doit être valide à la date du jour.
@@ -76,38 +66,9 @@ class SeanceService
         return $this->seanceRepository->create($seance);
     }
 
-    public function updateSeance(
-        int $idSeance,
-        string $dateSeance,
-        string $typeActivite,
-        int $duree,
-        ?string $equipementUtilise,
-        int $idAdherent,
-        int $idSalle
-    ): bool {
-        $this->validateSeanceData($typeActivite, $duree, $idAdherent, $idSalle);
-
-        $seance = new Seance($idSeance, $dateSeance, $typeActivite, $duree, $equipementUtilise, $idAdherent, $idSalle);
-
-        return $this->seanceRepository->update($seance);
-    }
-
     public function deleteSeance(int $idSeance): bool
     {
         return $this->seanceRepository->delete($idSeance);
-    }
-
-    public function getTotalSeances(): int
-    {
-        return $this->seanceRepository->countAll();
-    }
-
-    /**
-     * Répartition des séances par salle, pour le dashboard du réseau.
-     */
-    public function getRepartitionParSalle(): array
-    {
-        return $this->seanceRepository->countBySalle();
     }
 
     private function validateSeanceData(string $typeActivite, int $duree, int $idAdherent, int $idSalle): void

@@ -17,11 +17,6 @@ class AdherentService
         $this->adherentRepository = $adherentRepository;
     }
 
-    public function getAllAdherents(): array
-    {
-        return $this->adherentRepository->findAll();
-    }
-
     public function getAllAdherentsWithSalle(): array
     {
         return $this->adherentRepository->findAllWithSalle();
